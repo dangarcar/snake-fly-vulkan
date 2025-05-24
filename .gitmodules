@@ -1,0 +1,3 @@
+[submodule "vulkan-engine"]
+	path = vulkan-engine
+	url = https://github.com/dangarcar/vulkan-engine
