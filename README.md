@@ -6,4 +6,4 @@ To run it, read the requirements of the [vulkan-engine](https://github.com/danga
 
 To move the snake you'll need the arrow keys and to restart the game you'll need to press ENTER.
 
-[An example image of the game being played](example.png)
+![An example image of the game being played](example.png)
