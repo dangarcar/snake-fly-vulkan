@@ -14,7 +14,7 @@ public:
     ~SnakeGame() = default;
 
     void init(fly::Engine& engine) override {
-        engine.getTextRenderer().loadFont(
+        engine.getUIRenderer().loadFont(
             "DS_DIGITAL", 
             std::filesystem::path("assets/font.png"), 
             std::filesystem::path("assets/font.json")
@@ -44,7 +44,7 @@ public:
 
         if(dead) {
             //std::cout << "DEAD" << std::endl;
-            engine.getTextRenderer().renderText("DS_DIGITAL", "GAME OVER", {1280/2, 720/2 - 150}, fly::Align::CENTER, 200, {1, 1, 1, 1});
+            engine.getUIRenderer().renderText("DS_DIGITAL", "GAME OVER", {1280/2, 720/2 - 150}, fly::Align::CENTER, 200, {1, 1, 1, 1});
             
             if(engine.getWindow().keyJustPressed(GLFW_KEY_ENTER)) {
                 start();
@@ -92,10 +92,10 @@ public:
         auto tileWidth = (float) engine.getWindow().getWidth() / WIDTH;
         auto tileHeight = (float) engine.getWindow().getHeight() / HEIGHT;
         for(auto e: snake) {
-            engine.getRenderer2d().renderQuad({tileWidth * e.x, tileHeight * e.y}, {tileWidth, tileHeight}, SNAKE_COLOR);
+            engine.getUIRenderer().renderQuad({tileWidth * e.x, tileHeight * e.y}, {tileWidth, tileHeight}, SNAKE_COLOR);
         }
 
-        engine.getRenderer2d().renderQuad({tileWidth * apple.x, tileHeight * apple.y}, {tileWidth, tileHeight}, APPLE_COLOR);
+        engine.getUIRenderer().renderQuad({tileWidth * apple.x, tileHeight * apple.y}, {tileWidth, tileHeight}, APPLE_COLOR);
 
         for(int i=0; i<WIDTH; ++i) {
             for(int j=0; j<HEIGHT; ++j) {
@@ -103,7 +103,7 @@ public:
                     continue;
 
                 auto color = (i+j)%2? glm::vec4{0.488, 0.661, 0.429, 1} : glm::vec4{0.327, 0.641, 0.222, 1};
-                engine.getRenderer2d().renderQuad({tileWidth * i, tileHeight * j}, {tileWidth, tileHeight}, color);
+                engine.getUIRenderer().renderQuad({tileWidth * i, tileHeight * j}, {tileWidth, tileHeight}, color);
             }
         }
 
